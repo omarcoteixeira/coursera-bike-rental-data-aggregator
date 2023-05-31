@@ -1,1 +1,1 @@
-web: java $JAVA_OPTS -cp applications/api-server/target/api-server-**.jar br.com.omarcoteixeira.apps.bikerental.apiserver.ApiServerApplication
+web: java $JAVA_OPTS -cp target/api-server-**.jar br.com.omarcoteixeira.apps.bikerental.apiserver.ApiServerApplication

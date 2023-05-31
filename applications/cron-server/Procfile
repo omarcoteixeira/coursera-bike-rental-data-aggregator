@@ -1,1 +1,1 @@
-web: java $JAVA_OPTS -cp applications/cron-server/target/cron-server-**.jar br.com.omarcoteixeira.apps.bikerental.cronserver.CronServerApplication
+web: java $JAVA_OPTS -cp target/cron-server-**.jar br.com.omarcoteixeira.apps.bikerental.cronserver.CronServerApplication
