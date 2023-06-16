@@ -2,6 +2,7 @@ package br.com.omarcoteixeira.apps.bikerental.apiserver.configuration;
 
 import br.com.omarcoteixeira.apps.bikerental.apiserver.data.mapper.NetworkMapper;
 import br.com.omarcoteixeira.apps.bikerental.apiserver.repository.network.GetNetworkListRepository;
+import br.com.omarcoteixeira.apps.bikerental.apiserver.service.KafkaProducer;
 import br.com.omarcoteixeira.apps.bikerental.apiserver.usecase.GetNetworkListUseCase;
 import br.com.omarcoteixeira.apps.bikerental.apiserver.usecase.GetNetworkListUseCaseImpl;
 import br.com.omarcoteixeira.apps.bikerental.apiserver.usecase.RefreshNetworkListUseCase;
@@ -19,7 +20,7 @@ public class UseCaseConfiguration {
   }
 
   @Bean
-  RefreshNetworkListUseCase refreshNetworkListUseCase() {
-    return new RefreshNetworkListUseCaseImpl();
+  RefreshNetworkListUseCase refreshNetworkListUseCase(KafkaProducer kafkaProducer) {
+    return new RefreshNetworkListUseCaseImpl(kafkaProducer);
   }
 }

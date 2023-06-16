@@ -40,13 +40,13 @@ public class BikeNetworkDataIngestionService {
 
   @SneakyThrows
   private NetworkListDto read() {
-    log.debug("Reading data from the webserver");
+    log.info("Reading data from the webserver");
     String data =
         new RestTemplate().getForObject(bikeNetworkDataIngestionProperties.getUrl(), String.class);
     // TODO: Improve it later to use mapstruct
     var networks = new ObjectMapper().readValue(data, NetworkListDto.class);
-    log.debug("Networks Found: {}", networks.getNetworks().size());
-    log.debug("Reading data from the webserver done.");
+    log.info("Networks Found: {}", networks.getNetworks().size());
+    log.info("Reading data from the webserver done.");
     return networks;
   }
 }
