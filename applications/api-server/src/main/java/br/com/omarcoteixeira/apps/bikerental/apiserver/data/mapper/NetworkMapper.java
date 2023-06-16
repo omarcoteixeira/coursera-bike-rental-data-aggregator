@@ -1,6 +1,6 @@
-package br.com.omarcoteixeira.apps.bikerental.cronserver.data.mapper;
+package br.com.omarcoteixeira.apps.bikerental.apiserver.data.mapper;
 
-import br.com.omarcoteixeira.apps.bikerental.cronserver.data.dto.NetworkDto;
+import br.com.omarcoteixeira.apps.bikerental.apiserver.data.dto.NetworkDto;
 import br.com.omarcoteixeira.apps.bikerental.model.Network;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -16,5 +16,5 @@ public interface NetworkMapper {
   @Mapping(source = "name", target = "name")
   @Mapping(source = "href", target = "href")
   @Mapping(source = "companies", target = "companies")
-  Network to(NetworkDto networkDto);
+  NetworkDto from(Network network);
 }

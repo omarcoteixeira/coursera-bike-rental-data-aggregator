@@ -1,4 +1,4 @@
-package br.com.omarcoteixeira.apps.bikerental.cronserver.repository.network;
+package br.com.omarcoteixeira.apps.bikerental.apiserver.repository.network;
 
 import br.com.omarcoteixeira.apps.bikerental.model.Network;
 import java.util.List;
@@ -11,17 +11,16 @@ import org.springframework.stereotype.Repository;
 @Slf4j
 @Repository
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
-public class UpdateBikeNetworkRepositoryImpl implements UpdateBikeNetworkRepository {
+public class GetNetworkListRepositoryImpl implements GetNetworkListRepository {
 
   MongoTemplate mongoTemplate;
 
-  public UpdateBikeNetworkRepositoryImpl(MongoTemplate mongoTemplate) {
+  public GetNetworkListRepositoryImpl(MongoTemplate mongoTemplate) {
     this.mongoTemplate = mongoTemplate;
   }
 
-  public void execute(List<Network> networks) {
-    log.info("Updating bike network list.");
-    networks.parallelStream().forEach(mongoTemplate::save);
-    log.info("Updated bike network list finished.");
+  @Override
+  public List<Network> execute() {
+    return mongoTemplate.findAll(Network.class);
   }
 }
