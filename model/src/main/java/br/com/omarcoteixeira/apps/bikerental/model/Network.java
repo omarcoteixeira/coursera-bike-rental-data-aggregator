@@ -5,7 +5,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -21,12 +23,19 @@ import lombok.experimental.FieldDefaults;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Network {
 
-  @Id String id;
-  String name;
+  @Id
+  @Builder.Default
+  String id = UUID.randomUUID().toString();
 
-  @ElementCollection List<String> companies;
+  String name;
   String href;
 
-  @ManyToOne Location location;
-  @ManyToMany List<Station> stations;
+  @ElementCollection
+  @Builder.Default
+  List<String> companies = new ArrayList<>();
+
+  @ManyToOne
+  Location location;
+  @ManyToMany
+  List<Station> stations;
 }
