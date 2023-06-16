@@ -1,1 +1,1 @@
-web: java -cp target/classes:target/cron-server-*.jar br.com.omarcoteixeira.apps.bikerental.cronserver.CronServerApplication
+web: java -jar target/cron-server-*.jar
