@@ -23,19 +23,13 @@ import lombok.experimental.FieldDefaults;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Network {
 
-  @Id
-  @Builder.Default
-  String id = UUID.randomUUID().toString();
+  @Id @Builder.Default String id = UUID.randomUUID().toString();
 
   String name;
   String href;
 
-  @ElementCollection
-  @Builder.Default
-  List<String> companies = new ArrayList<>();
+  @ElementCollection @Builder.Default List<String> companies = new ArrayList<>();
 
-  @ManyToOne
-  Location location;
-  @ManyToMany
-  List<Station> stations;
+  @ManyToOne Location location;
+  @ManyToMany List<Station> stations;
 }
