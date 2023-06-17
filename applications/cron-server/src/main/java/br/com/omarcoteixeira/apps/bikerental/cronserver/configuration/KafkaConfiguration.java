@@ -33,6 +33,7 @@ public class KafkaConfiguration {
     props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
     props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
     props.put(ConsumerConfig.GROUP_ID_CONFIG, "cron_job");
+    props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
     props.put(CommonClientConfigs.SECURITY_PROTOCOL_CONFIG, "SASL_SSL");
     props.put(SaslConfigs.SASL_MECHANISM, "PLAIN");
     props.put(SaslConfigs.SASL_JAAS_CONFIG,
