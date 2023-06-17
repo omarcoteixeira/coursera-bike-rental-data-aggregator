@@ -3,6 +3,8 @@ package br.com.omarcoteixeira.apps.bikerental.apiserver.configuration;
 import br.com.omarcoteixeira.apps.bikerental.apiserver.configuration.properties.DatabaseDataIngestionProperties;
 import br.com.omarcoteixeira.apps.bikerental.apiserver.repository.network.GetNetworkListRepository;
 import br.com.omarcoteixeira.apps.bikerental.apiserver.repository.network.GetNetworkListRepositoryImpl;
+import br.com.omarcoteixeira.apps.bikerental.apiserver.repository.network.GetNetworksByNameRepository;
+import br.com.omarcoteixeira.apps.bikerental.apiserver.repository.network.GetNetworksByNameRepositoryImpl;
 import com.mongodb.ConnectionString;
 import com.mongodb.MongoClientSettings;
 import com.mongodb.client.MongoClient;
@@ -34,5 +36,10 @@ public class RepositoryConfiguration {
   @Bean
   GetNetworkListRepository getNetworkListRepository(MongoTemplate mongoTemplate) {
     return new GetNetworkListRepositoryImpl(mongoTemplate);
+  }
+
+  @Bean
+  GetNetworksByNameRepository getNetworksByNameRepository(MongoTemplate mongoTemplate) {
+    return new GetNetworksByNameRepositoryImpl(mongoTemplate);
   }
 }
