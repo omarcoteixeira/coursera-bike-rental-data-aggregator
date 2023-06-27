@@ -1,6 +1,6 @@
-package br.com.omarcoteixeira.apps.bikerental.cronserver.controller;
+package br.com.omarcoteixeira.apps.bikerental.dataanalyzerserver.controller;
 
-import br.com.omarcoteixeira.apps.bikerental.cronserver.health.MongoDBHealthIndicator;
+import br.com.omarcoteixeira.apps.bikerental.dataanalyzerserver.health.MongoDBHealthIndicator;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.experimental.FieldDefaults;

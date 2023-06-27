@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("networks")
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
-public class NetworksController {
+public class NetworkListController {
 
   GetNetworkListUseCase getNetworkListUseCase;
   RefreshNetworkListUseCase refreshNetworkListUseCase;
