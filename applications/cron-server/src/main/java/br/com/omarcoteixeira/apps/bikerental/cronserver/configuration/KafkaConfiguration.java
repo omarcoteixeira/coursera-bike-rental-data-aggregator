@@ -7,9 +7,9 @@ import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
 import org.apache.kafka.clients.CommonClientConfigs;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
-import org.apache.kafka.common.serialization.StringDeserializer;
 import org.apache.kafka.common.config.SaslConfigs;
 import org.apache.kafka.common.security.plain.PlainLoginModule;
+import org.apache.kafka.common.serialization.StringDeserializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.config.ConcurrentKafkaListenerContainerFactory;
@@ -36,17 +36,21 @@ public class KafkaConfiguration {
     props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
     props.put(CommonClientConfigs.SECURITY_PROTOCOL_CONFIG, "SASL_SSL");
     props.put(SaslConfigs.SASL_MECHANISM, "PLAIN");
-    props.put(SaslConfigs.SASL_JAAS_CONFIG,
-        String.format("%s required username=\"%s\" " + "password=\"%s\";",
-            PlainLoginModule.class.getName(), kafkaServerProperties.getUsername(),
+    props.put(
+        SaslConfigs.SASL_JAAS_CONFIG,
+        String.format(
+            "%s required username=\"%s\" " + "password=\"%s\";",
+            PlainLoginModule.class.getName(),
+            kafkaServerProperties.getUsername(),
             kafkaServerProperties.getPassword()));
     return new DefaultKafkaConsumerFactory<>(props);
   }
 
   @Bean
-  public ConcurrentKafkaListenerContainerFactory<String, String> refreshDataKafkaListenerContainerFactory(
-      ConsumerFactory<String, String> consumerFactory) {
-    ConcurrentKafkaListenerContainerFactory<String, String> factory = new ConcurrentKafkaListenerContainerFactory<>();
+  public ConcurrentKafkaListenerContainerFactory<String, String>
+      refreshDataKafkaListenerContainerFactory(ConsumerFactory<String, String> consumerFactory) {
+    ConcurrentKafkaListenerContainerFactory<String, String> factory =
+        new ConcurrentKafkaListenerContainerFactory<>();
     factory.setConsumerFactory(consumerFactory);
     return factory;
   }

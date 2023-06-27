@@ -17,9 +17,12 @@ import org.springframework.context.annotation.Configuration;
 public class UseCaseConfiguration {
 
   @Bean
-  GetNetworkListUseCase getNetworkListUseCase(GetNetworkListRepository getNetworkListRepository,
+  GetNetworkListUseCase getNetworkListUseCase(
+      GetNetworkListRepository getNetworkListRepository,
+      GetNetworksByNameRepository getNetworksByNameRepository,
       NetworkMapper networkMapper) {
-    return new GetNetworkListUseCaseImpl(getNetworkListRepository, networkMapper);
+    return new GetNetworkListUseCaseImpl(
+        getNetworkListRepository, getNetworksByNameRepository, networkMapper);
   }
 
   @Bean

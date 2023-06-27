@@ -2,10 +2,11 @@ package br.com.omarcoteixeira.apps.bikerental.apiserver.controller;
 
 import br.com.omarcoteixeira.apps.bikerental.apiserver.data.dto.NetworkDto;
 import br.com.omarcoteixeira.apps.bikerental.apiserver.usecase.GetNetworkListUseCase;
-import br.com.omarcoteixeira.apps.bikerental.apiserver.usecase.GetNetworksByNameUseCase;
 import br.com.omarcoteixeira.apps.bikerental.apiserver.usecase.RefreshNetworkListUseCase;
 import java.util.List;
+import java.util.Optional;
 import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,29 +16,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("networks")
+@AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class NetworksController {
 
   GetNetworkListUseCase getNetworkListUseCase;
-  GetNetworksByNameUseCase getNetworksByNameUseCase;
   RefreshNetworkListUseCase refreshNetworkListUseCase;
 
-  public NetworksController(
-      GetNetworkListUseCase getNetworkListUseCase,
-      GetNetworksByNameUseCase getNetworksByNameUseCase, RefreshNetworkListUseCase refreshNetworkListUseCase) {
-    this.getNetworkListUseCase = getNetworkListUseCase;
-    this.getNetworksByNameUseCase = getNetworksByNameUseCase;
-    this.refreshNetworkListUseCase = refreshNetworkListUseCase;
-  }
-
   @GetMapping()
-  public List<NetworkDto> getNetworkList() {
-    return getNetworkListUseCase.execute();
-  }
-
-  @GetMapping("find")
-  public List<NetworkDto> findNetworks(@RequestParam String name) {
-    return getNetworksByNameUseCase.execute(name);
+  public List<NetworkDto> getNetworkList(@RequestParam Optional<String> name) {
+    return getNetworkListUseCase.execute(name);
   }
 
   @PostMapping("refresh")

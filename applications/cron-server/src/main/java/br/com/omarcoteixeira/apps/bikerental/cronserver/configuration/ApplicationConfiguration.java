@@ -17,23 +17,21 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @EnableWebMvc
 @EnableScheduling
 @Import({
-    TaskSchedulingAutoConfiguration.class,
-    ServletWebServerFactoryAutoConfiguration.class,
-    DispatcherServletAutoConfiguration.class,
-    MapperConfiguration.class,
-    KafkaConfiguration.class,
-    RepositoryConfiguration.class,
+  TaskSchedulingAutoConfiguration.class,
+  ServletWebServerFactoryAutoConfiguration.class,
+  DispatcherServletAutoConfiguration.class,
+  MapperConfiguration.class,
+  KafkaConfiguration.class,
+  RepositoryConfiguration.class,
 })
 @EnableConfigurationProperties({
-    DatabaseDataIngestionProperties.class,
-    BikeNetworkDataIngestionProperties.class,
-    BikeNetworkDataIngestionSchedulerProperties.class
+  DatabaseDataIngestionProperties.class,
+  BikeNetworkDataIngestionProperties.class,
+  BikeNetworkDataIngestionSchedulerProperties.class
 })
 @ComponentScan(
     basePackages = {
-        "br.com.omarcoteixeira.apps.bikerental.cronserver.scheduler",
-        "br.com.omarcoteixeira.apps.bikerental.cronserver.data.mapper"
+      "br.com.omarcoteixeira.apps.bikerental.cronserver.scheduler",
+      "br.com.omarcoteixeira.apps.bikerental.cronserver.data.mapper"
     })
-public class ApplicationConfiguration {
-
-}
+public class ApplicationConfiguration {}

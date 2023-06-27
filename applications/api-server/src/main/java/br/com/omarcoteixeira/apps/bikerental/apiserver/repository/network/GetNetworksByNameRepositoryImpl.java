@@ -1,6 +1,5 @@
 package br.com.omarcoteixeira.apps.bikerental.apiserver.repository.network;
 
-import br.com.omarcoteixeira.apps.bikerental.apiserver.usecase.GetNetworksByNameUseCase;
 import br.com.omarcoteixeira.apps.bikerental.model.Network;
 import java.util.List;
 import lombok.AccessLevel;

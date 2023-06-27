@@ -18,7 +18,9 @@ public class BikeNetworkDataRefreshConsumerService {
     this.bikeNetworkDataIngestionService = bikeNetworkDataIngestionService;
   }
 
-  @KafkaListener(topics = "refresh_data", containerFactory = "refreshDataKafkaListenerContainerFactory")
+  @KafkaListener(
+      topics = "refresh_data",
+      containerFactory = "refreshDataKafkaListenerContainerFactory")
   public void execute(String message) {
     log.info("New message received: {}", message);
     if (KafkaMessages.REFRESH_DATA.getValue().equals(message)) {

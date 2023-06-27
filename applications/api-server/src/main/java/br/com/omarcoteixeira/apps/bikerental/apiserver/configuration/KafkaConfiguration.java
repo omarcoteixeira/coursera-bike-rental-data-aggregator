@@ -4,6 +4,7 @@ import br.com.omarcoteixeira.apps.bikerental.apiserver.configuration.properties.
 import java.util.HashMap;
 import java.util.Map;
 import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.apache.kafka.clients.CommonClientConfigs;
 import org.apache.kafka.clients.producer.ProducerConfig;
@@ -17,14 +18,11 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.core.ProducerFactory;
 
 @Configuration
+@AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class KafkaConfiguration {
 
   KafkaServerProperties kafkaServerProperties;
-
-  public KafkaConfiguration(KafkaServerProperties kafkaServerProperties) {
-    this.kafkaServerProperties = kafkaServerProperties;
-  }
 
   @Bean
   public ProducerFactory<String, String> producerFactory() {
