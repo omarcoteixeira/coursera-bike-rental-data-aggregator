@@ -23,8 +23,8 @@ import lombok.experimental.FieldDefaults;
 public class NetworkCompanyMetadata {
 
   @Id @Builder.Default String id = UUID.randomUUID().toString();
-  Long numberOfNetworks;
-  Long totalBikes;
+  @Builder.Default Long numberOfNetworks = 0L;
+  @Builder.Default Long totalBikes = 0L;
 
   LocalDateTime createdOn;
   LocalDateTime updatedOn;

@@ -7,8 +7,9 @@ import lombok.experimental.FieldDefaults;
 
 @Getter
 @AllArgsConstructor
-@FieldDefaults(level = AccessLevel.PRIVATE)
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public enum KafkaMessages {
   REFRESH_DATA("refresh_data");
+
   String value;
 }
