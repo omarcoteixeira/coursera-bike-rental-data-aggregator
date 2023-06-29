@@ -23,7 +23,13 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
   KafkaConfiguration.class,
   UseCaseConfiguration.class,
   RepositoryConfiguration.class,
+  HealthIndicatorConfiguration.class,
 })
 @EnableConfigurationProperties({KafkaServerProperties.class, DatabaseDataIngestionProperties.class})
-@ComponentScan(basePackages = {"br.com.omarcoteixeira.apps.bikerental.apiserver.controller"})
+@ComponentScan(
+    basePackages = {
+      "br.com.omarcoteixeira.apps.bikerental.apiserver.controller",
+      "br.com.omarcoteixeira.apps.bikerental.apiserver.service",
+      "br.com.omarcoteixeira.apps.bikerental.apiserver.data.mapper"
+    })
 public class ApplicationConfiguration {}

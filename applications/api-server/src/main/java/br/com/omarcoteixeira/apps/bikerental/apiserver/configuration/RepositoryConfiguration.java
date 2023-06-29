@@ -1,6 +1,8 @@
 package br.com.omarcoteixeira.apps.bikerental.apiserver.configuration;
 
 import br.com.omarcoteixeira.apps.bikerental.apiserver.configuration.properties.DatabaseDataIngestionProperties;
+import br.com.omarcoteixeira.apps.bikerental.apiserver.repository.company.GetCompanyDetailsRepository;
+import br.com.omarcoteixeira.apps.bikerental.apiserver.repository.company.GetCompanyDetailsRepositoryImpl;
 import br.com.omarcoteixeira.apps.bikerental.apiserver.repository.network.GetNetworkListRepository;
 import br.com.omarcoteixeira.apps.bikerental.apiserver.repository.network.GetNetworkListRepositoryImpl;
 import br.com.omarcoteixeira.apps.bikerental.apiserver.repository.network.GetNetworksByNameRepository;
@@ -41,5 +43,10 @@ public class RepositoryConfiguration {
   @Bean
   GetNetworksByNameRepository getNetworksByNameRepository(MongoTemplate mongoTemplate) {
     return new GetNetworksByNameRepositoryImpl(mongoTemplate);
+  }
+
+  @Bean
+  GetCompanyDetailsRepository getCompanyDetailsRepository(MongoTemplate mongoTemplate) {
+    return new GetCompanyDetailsRepositoryImpl(mongoTemplate);
   }
 }

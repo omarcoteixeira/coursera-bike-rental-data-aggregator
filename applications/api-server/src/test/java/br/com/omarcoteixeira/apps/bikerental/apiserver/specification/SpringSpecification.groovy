@@ -1,6 +1,9 @@
 package br.com.omarcoteixeira.apps.bikerental.apiserver.specification
 
+import br.com.omarcoteixeira.apps.bikerental.apiserver.configuration.ApplicationConfiguration
+import br.com.omarcoteixeira.apps.bikerental.apiserver.data.mapper.CompanyMapper
 import com.fasterxml.jackson.databind.ObjectMapper
+import org.mapstruct.factory.Mappers
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.ConfigDataApplicationContextInitializer
 import org.springframework.test.context.ContextConfiguration
@@ -13,7 +16,9 @@ import spock.lang.Specification
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppContextSetup
 
 @WebAppConfiguration
-@ContextConfiguration(initializers = [ConfigDataApplicationContextInitializer])
+@ContextConfiguration(
+        classes = ApplicationConfiguration,
+        initializers = [ConfigDataApplicationContextInitializer])
 class SpringSpecification extends Specification {
 
     @Shared
