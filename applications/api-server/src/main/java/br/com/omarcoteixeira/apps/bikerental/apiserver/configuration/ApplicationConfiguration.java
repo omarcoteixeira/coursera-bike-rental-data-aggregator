@@ -32,17 +32,20 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
     basePackages = {
       "br.com.omarcoteixeira.apps.bikerental.apiserver.controller",
       "br.com.omarcoteixeira.apps.bikerental.apiserver.service",
+      "br.com.omarcoteixeira.apps.bikerental.apiserver.health",
       "br.com.omarcoteixeira.apps.bikerental.apiserver.data.mapper"
     })
 public class ApplicationConfiguration {
-    @Bean
-    public WebMvcConfigurer corsConfigurer() {
-        return new WebMvcConfigurer() {
-            @Override
-            public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/**")
-                    .allowedOrigins("https://bike-rental-aggregator-web.herokuapp.com");;
-            }
-        };
-    }
+  @Bean
+  public WebMvcConfigurer corsConfigurer() {
+    return new WebMvcConfigurer() {
+      @Override
+      public void addCorsMappings(CorsRegistry registry) {
+        registry
+            .addMapping("/**")
+            .allowedOrigins("https://bike-rental-aggregator-web.herokuapp.com");
+        ;
+      }
+    };
+  }
 }
