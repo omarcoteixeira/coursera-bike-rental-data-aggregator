@@ -6,11 +6,14 @@ import org.springframework.boot.autoconfigure.task.TaskSchedulingAutoConfigurati
 import org.springframework.boot.autoconfigure.web.servlet.DispatcherServletAutoConfiguration;
 import org.springframework.boot.autoconfigure.web.servlet.ServletWebServerFactoryAutoConfiguration;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.kafka.annotation.EnableKafka;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 @EnableWebMvc
@@ -22,8 +25,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
   MapperConfiguration.class,
   KafkaConfiguration.class,
   UseCaseConfiguration.class,
-  RepositoryConfiguration.class,
-  HealthIndicatorConfiguration.class,
+  RepositoryConfiguration.class
 })
 @EnableConfigurationProperties({KafkaServerProperties.class, DatabaseDataIngestionProperties.class})
 @ComponentScan(
@@ -32,4 +34,15 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
       "br.com.omarcoteixeira.apps.bikerental.apiserver.service",
       "br.com.omarcoteixeira.apps.bikerental.apiserver.data.mapper"
     })
-public class ApplicationConfiguration {}
+public class ApplicationConfiguration {
+    @Bean
+    public WebMvcConfigurer corsConfigurer() {
+        return new WebMvcConfigurer() {
+            @Override
+            public void addCorsMappings(CorsRegistry registry) {
+                registry.addMapping("/**")
+                    .allowedOrigins("https://bike-rental-aggregator-web.herokuapp.com");;
+            }
+        };
+    }
+}

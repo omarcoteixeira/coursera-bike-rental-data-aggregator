@@ -7,10 +7,14 @@ type FormData = {
   search: string;
 };
 
-function SearchForm() {
+interface Props {
+  onSubmit: (query: String) => void;
+}
+
+function SearchForm(props: Props) {
   const { register, handleSubmit, formState: { errors } } = useForm<FormData>();
   const handleSearch = handleSubmit(data =>
-      alert("Searching for: " + data.search)
+      props.onSubmit(data.search)
   );
   const searchOptions = {
     search: { required: "Search is required" },
