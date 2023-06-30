@@ -10,6 +10,7 @@ The main idea is to collect Bike Rental offers from many bike providers and find
 - MongoDB
 - Apache Kafka
 - Spock Framework
+- NodeJS and React
 - Continuous Integration - GitHub Actions
 - Continuous Deployment - Heroku Pipeline
 - Docker Compose
