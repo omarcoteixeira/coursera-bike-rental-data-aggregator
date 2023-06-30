@@ -58,7 +58,7 @@ make run-api-server
 make run-cron-server
 ```
 
-3 - Run Data Analyzer
+4 - Run Data Analyzer
 ```shell
 make run-data-analyzer-server
 ```
