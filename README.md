@@ -15,6 +15,24 @@ The main idea is to collect Bike Rental offers from many bike providers and find
 - Continuous Deployment - Heroku Pipeline
 - Docker Compose
 
+## Services + Folder Structure + Packages 
+- ### /model (Database Schema):
+    - Package: **br.com.omarcoteixeira.apps.bikerental.model**
+    - In this folder you can find database schemas.
+- ### /applications/api-server (API Server):
+    - Package: **br.com.omarcoteixeira.apps.bikerental.apiserver**
+    - This is module you can find the main API.
+    - This module is responsible to read pre-processed data from the database using the model/schema provided on model folder. Also responsible to start the cron-server.
+- ### /applications/cron-server (Data Collection):
+    - Package: **br.com.omarcoteixeira.apps.bikerental.cronserver**
+    - This module is responsible to read data from the data source and format data accordingly with the database schema/model provided on model folder.
+    - Also responsible to read messages from Kafka Clusters when a data refresh is requested.
+- ### /applications/data-analyzer-server (Data Analysis):
+    - Package: **br.com.omarcoteixeira.apps.bikerental.dataanalyzerserver**
+    - This module is responsible to read data from database, aggregate and transform meaningful data saving the results at database again.
+- ### /applications/web-server (Web Interface):
+    - React module responsible to read data from API and display the result to the user.
+
 
 ## Project Questions
 ### Goals
