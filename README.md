@@ -60,26 +60,36 @@ Run all test and quality gates:
 make verify
 ```
 
-### In order to test it locally you should run the following commands in this sequence
+### In order to test it locally you should run the following commands in different window terminals
 
-1 - Run Mongo DB and Kafka Server using Docker Compose
+
+1 - In a **new terminal** run the following command to run Mongo DB and Kafka Server using Docker Compose
 ```shell
 make run-local-support-servers
 ```
 
-2 - Run API Server
+2 - In a **new terminal** run the following command to run API Server
 ```shell
 make run-api-server
 ```
 
-3 - Run Cron Server
+3 - In a **new terminal** run the following command to run  Cron Server
 ```shell
 make run-cron-server
 ```
 
-4 - Run Data Analyzer
+4 - In a **new terminal** run the following command to run  Data Analyzer
 ```shell
 make run-data-analyzer-server
+```
+
+5 - In a **new terminal** run the following command to run to do a simple GET request to retrieve data
+```shell
+curl GET http://localhost:8080/networks?name=Nextbike
+```
+To show formatted JSON data you can use [jq](https://jqlang.github.io/jq/) plugin 
+```shell
+curl GET http://localhost:8080/networks?name=Nextbike | jq
 ```
 
 ### To stop local servers (MongoDB and Kafka)
